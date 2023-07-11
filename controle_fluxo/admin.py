@@ -1,6 +1,14 @@
 from django.contrib import admin
-from .models import activities
+from .models import Activities, Bank, Owner
 
-@admin.register(activities)
+@admin.register(Activities)
 class activitiesAdmin(admin.ModelAdmin):
-    list_display = ('value', 'input', 'description', 'bank', 'proof')
+    list_display = ('created', 'value', 'input', 'description', 'bank', 'owner', 'proof')
+
+@admin.register(Bank)
+class bankAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value')
+
+@admin.register(Owner)
+class ownerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value')

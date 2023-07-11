@@ -1,0 +1,41 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <main class="container">
+        <table class="table border border-dark border-5 rounded">
+            <thead class="table-dark">
+                <th scope="col">Valor</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Local</th>
+                <th scope="col">Dono</th>
+                <th scope="col">Comprovante</th>
+                <th scope="col">Data</th>
+            </thead>
+            <tbody>
+                {% for activity in historic %}
+                    <tr>
+                        {% if activity.input %}
+                            <td class="text-success">R$ {{ activity.value }}</td>
+                        {% else %}
+                            <td class="text-danger">R$ {{ activity.value }}</td>
+                        {% endif %}
+                        <td>{{ activity.description }}</td>
+                        <td>{{ activity.bank }}</td>
+                        <td>{{ activity.owner }}</td>
+                        <td>Sem Comprovante</td>
+                        <td>{{ activity.created }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

@@ -7,20 +7,34 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-class activities(Base):
+class Bank(Base):
+    name = models.CharField('Name', max_length=100)
+    value = models.DecimalField('Value', max_digits=10, decimal_places=2, default=0)
+
+    class Meta:
+        verbose_name = 'Bank'
+        verbose_name_plural = 'Banks'
+    
+    def __str__(self):
+        return self.name
+    
+class Owner(Base):
+    name = models.CharField('Name', max_length=100)
+    value = models.DecimalField('Value', max_digits=10, decimal_places=2)
+
+    class Meta:
+        verbose_name = 'Owner'
+        verbose_name_plural = 'Owners'
+
+    def __str__(self):
+        return self.name
+
+class Activities(Base):
     value = models.DecimalField('Valor', max_digits=10, decimal_places=2)
     input = models.BooleanField('Entrada?', default=True)
     description = models.TextField('Descrição', max_length=200)
-    
-    BANK_CHOICES = (
-        ('Picpay', 'Picpay'),
-        ('Nubank', 'Nubank'),
-        ('Banco do Brasil', 'Banco do Brasil'),
-        ('Espécie', 'Espécie'),
-    )
-
-    bank = models.CharField(max_length=15, choices=BANK_CHOICES)
-
+    bank = models.ForeignKey('Bank', on_delete=models.CASCADE)
+    owner = models.ForeignKey('Owner', on_delete=models.CASCADE)
     proof = models.FileField(upload_to='comprovantes/', blank=True, null=True)
 
     class Meta:
@@ -28,4 +42,4 @@ class activities(Base):
         verbose_name_plural = 'Activities'
     
     def __str__(self):
-        return self.value
+        return str(self.value)
