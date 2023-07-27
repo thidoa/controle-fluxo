@@ -1,0 +1,25 @@
+.total {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 2em;
+    margin: 0 auto;
+}
+
+table, th, td {
+    margin: 0 auto;
+    border: 1px solid;
+    /*border-radius: 10px;*/
+    text-align: center;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+
+.entrada {
+    color: green;
+}
+
+.saida {
+    color: red;
+}

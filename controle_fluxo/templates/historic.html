@@ -1,15 +1,19 @@
 {% load static %}
-{% load bootstrap5 %}
+<!-- {% load bootstrap5 %} -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
     <title>Histórico</title>
-    {% bootstrap_css %}
+    <!-- {% bootstrap_css %} -->
 </head>
 <body>
     <main class="container">
+        {% if total > 0 %}
+            <p class="total">Total: R$ {{ total }}</p>
+        {% endif %}
         <table class="table border border-dark border-5 rounded">
             <thead class="table-dark">
                 <th scope="col">Valor</th>
@@ -23,9 +27,9 @@
                 {% for activity in historic %}
                     <tr>
                         {% if activity.input %}
-                            <td class="text-success">R$ {{ activity.value }}</td>
+                            <td class="text-success entrada">R$ {{ activity.value }}</td>
                         {% else %}
-                            <td class="text-danger">R$ {{ activity.value }}</td>
+                            <td class="text-danger saida">R$ {{ activity.value }}</td>
                         {% endif %}
                         <td>{{ activity.description }}</td>
                         <td>{{ activity.bank }}</td>

@@ -67,12 +67,22 @@ class HistoricView(TemplateView):
 
     def get(self, request, name):
         
+        if Owner.objects.filter(name=name).exists():
+            historic = Activities.objects.filter(owner=(Owner.objects.filter(name=name)).first())
+            total = Owner.objects.filter(name=name).first().value
+        elif Bank.objects.filter(name=name).exists():
+            historic = Activities.objects.filter(bank=(Bank.objects.filter(name=name)).first())
+            total = Bank.objects.filter(name=name).first().value
+        else:
+            historic = Activities.objects.all()
+            total = 0
+        print(historic)
         
-
         context = {
-            'historic'
+            'historic': historic,
+            'total': total
         }
-        return render (request, 'historic.html')
+        return render (request, 'historic.html', context)
 
     # def get_context_data(self, **kwargs):
     #     context = super(HistoricView, self).get_context_data(**kwargs)

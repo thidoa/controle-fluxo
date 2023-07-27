@@ -1,5 +1,5 @@
 {% load static %}
-{% load bootstrap5 %}
+<!-- {% load bootstrap5 %} -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>index</title>
-    {% bootstrap_css %}
+    <!-- {% bootstrap_css %} -->
 </head>
 <body>
-    <h1>index</h1>
-    <a class="btn btn-primary" href="{% url 'create_activity' %}">Cadastrar</a>
-    <a class="btn btn-primary" href="{% url 'historic' name='all' %}">Histórico geral</a>
-    <main>
+    <h1 class="titulo">Controle de fluxo</h1>
+    <div class="functions">
+        <a class="btn btn-primary" href="{% url 'create_activity' %}">Cadastrar</a>
+        <a class="btn btn-primary" href="{% url 'historic' name='all' %}">Histórico geral</a>
+    </div>
+    <main class="main">
         <section class="container d-flex justify-content-around">
             {% for owner in owners %}
                 <div class="card text-center" style="width: 18rem;">
@@ -36,7 +38,7 @@
                     <div class="card-body">
                     <h5 class="card-title">{{ bank.name }}</h5>
                     <p class="card-text">R$ {{ bank.value }}</p>
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    <a href="{% url 'historic' name=bank.name %}" class="btn btn-primary">Histórico</a>
                     </div>
                 </div>
             
