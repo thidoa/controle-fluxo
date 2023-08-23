@@ -9,14 +9,24 @@
     <title>index</title>
     {% bootstrap_css %}
 </head>
-<body>
-    <h1 class="titulo">Controle de fluxo</h1>
-    <div class="functions">
-        <a class="btn btn-primary" href="{% url 'create_activity' %}">Cadastrar</a>
-        <a class="btn btn-primary" href="{% url 'historic' name='all' %}">Histórico geral</a>
+<body class="bg-dark">
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+        <div class="bg-dark p-4">
+            <a class="btn btn-light" href="{% url 'index' %}">home</a>
+            <a class="btn btn-light" href="{% url 'create_activity' %}">Cadastrar</a>
+            <a class="btn btn-light" href="{% url 'historic' name='all' %}">Histórico geral</a>
+        </div>
     </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="m-auto titulo text-white ">Controle de fluxo</h1>
+        </div>
+    </nav>
     <main class="main">
-        <section class="container d-flex justify-content-around">
+        <section class="container d-flex justify-content-around flex-wrap">
             {% for owner in owners %}
                 <div class="card text-center" style="width: 18rem;">
                     <img src="https://img.icons8.com/ios-glyphs/480/user--v1.png" class="card-img-top" alt="...">
@@ -29,7 +39,7 @@
             {% endfor %}
         </section>
 
-        <hr>
+        <hr class="bg-light container">
 
         <section class="container-fluid d-flex justify-content-around flex-wrap">
             {% for bank in banks %}
@@ -45,5 +55,6 @@
             {% endfor %}
         </section>
     </main>
+    {% bootstrap_javascript %}
 </body>
 </html>

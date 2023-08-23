@@ -9,13 +9,14 @@
     <title>Histórico</title>
     {% bootstrap_css %}
 </head>
-<body>
-    <main class="container">
+<body class="bg-dark text-light">
+    <h1 class="container text-center text-light">Histórico</h1>
+    <main class="container m-auto border border-light rounded p-0">
         {% if total > 0 %}
             <p class="total">Total: R$ {{ total }}</p>
         {% endif %}
-        <table class="table border border-dark border-5 rounded">
-            <thead class="table-dark">
+        <table class="table border border-light  border-5 rounded text-light m-0">
+            <thead class="table-light">
                 <th scope="col">Valor</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Local</th>
