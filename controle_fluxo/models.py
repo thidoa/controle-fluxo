@@ -10,6 +10,7 @@ class Base(models.Model):
 class Bank(Base):
     name = models.CharField('Name', max_length=100)
     value = models.DecimalField('Value', max_digits=10, decimal_places=2, default=0)
+    icone = models.FileField(upload_to='bank/', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Bank'

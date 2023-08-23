@@ -26,7 +26,7 @@
         </div>
     </nav>
     <main class="main">
-        <section class="container d-flex justify-content-around flex-wrap">
+        <section class="container-fluid d-flex justify-content-around flex-wrap">
             {% for owner in owners %}
                 <div class="card text-center" style="width: 18rem;">
                     <img src="https://img.icons8.com/ios-glyphs/480/user--v1.png" class="card-img-top" alt="...">
@@ -44,7 +44,11 @@
         <section class="container-fluid d-flex justify-content-around flex-wrap">
             {% for bank in banks %}
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="https://img.icons8.com/dotty/480/bank-building.png" class="card-img-top" alt="...">
+                    {% if bank.icone %}
+                        <img src="{{ bank.icone.url }}" class="card-img-top border rounded-circle" alt="...">
+                    {% else %}
+                        <img src="https://img.icons8.com/dotty/480/bank-building.png" class="card-img-top" alt="...">
+                    {% endif %}
                     <div class="card-body">
                     <h5 class="card-title">{{ bank.name }}</h5>
                     <p class="card-text">R$ {{ bank.value }}</p>
