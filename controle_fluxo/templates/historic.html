@@ -1,16 +1,12 @@
+{% extends 'base.html' %}
 {% load static %}
-{% load bootstrap5 %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{% static 'css/table.css' %}"> -->
+{% block content %}
     <title>Histórico</title>
-    {% bootstrap_css %}
 </head>
 <body class="bg-dark text-light">
-    <h1 class="container text-center text-light">Histórico</h1>
+    {% with menu_title="Histórico"%}
+        {% include 'partials/_menu.html' %}
+    {% endwith %}
     <main class="container m-auto border border-light rounded p-0">
         {% if total > 0 %}
             <p class="total">Total: R$ {{ total }}</p>
@@ -42,5 +38,4 @@
             </tbody>
         </table>
     </main>
-</body>
-</html>
+    {% endblock %}

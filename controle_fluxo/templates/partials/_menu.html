@@ -1,0 +1,15 @@
+<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+    <div class="bg-dark p-4">
+        <a class="btn btn-light" href="{% url 'index' %}">home</a>
+        <a class="btn btn-light" href="{% url 'create_activity' %}">Cadastrar</a>
+        <a class="btn btn-light" href="{% url 'historic' name='all' %}">Histórico geral</a>
+    </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="m-auto titulo text-white ">{{ menu_title }}</h1>
+    </div>
+</nav>
